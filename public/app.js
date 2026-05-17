@@ -86,6 +86,13 @@ function renderIntentions() {
     });
 }
 
+function deleteIntention(index) {
+    intentions.splice(index, 1);
+    localStorage.setItem(
+        "intentions",
+        JSON.stringify(intentions)
+    );
+
     renderIntentions();
 }
 
@@ -127,5 +134,13 @@ function renderReflections() {
     });
 }
 
+function deleteReflection(index) {
+    reflections.splice(index, 1);
+    localStorage.setItem(
+        "reflections",
+        JSON.stringify(reflections)
+    );
+    renderReflections();
+}
 renderIntentions();
 renderReflections();
