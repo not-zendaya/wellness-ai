@@ -39,6 +39,9 @@ app.post("/ask", async (req, res) => {
     - gentle reflection
     - 2 to 5 healthier suggestions
     - encouraging tone
+    -hobbies where necessary 
+    -craft activities where necessary
+    -mentally stimulating activities where necessary 
     `;
 
     try {
@@ -67,9 +70,7 @@ app.post("/ask", async (req, res) => {
         res.json(data);
 
     } catch (error) {
-
         console.log(error);
-
         res.status(500).json({
             error: "Something went wrong"
         });
