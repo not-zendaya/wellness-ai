@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌿Intentional Living Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🌱Intentional Living Assistant 🌿</h1>
+
+        <button id="darkModeBtn" onclick="toggleDarkMode()">
+            🌙 Dark Mode
+        </button>
+
+        <p class="subtitle">
+            A digital wellness assistant that helps reduce compulsive screen habits.A calm AI-powered space to reflect,
+            reset and build healthier habits.
+        </p>
+
+        <div class="streak-box">
+            🔥 Current Wellness Streak:
+            <span id="streakCount">0</span> days
+        </div>
+
+        <div class="section">
+            <h2>Describe Your Current Habit</h2>
+
+            <textarea id="userInput"
+                placeholder="Example: I've been scrolling on TikTok for hours and I feel distracted."></textarea>
+
+            <button onclick="askAI()">Get Suggestions</button>
+        </div>
+
+        <div class="section">
+            <h2>AI Wellness Suggestions</h2>
+
+            <div id="response">
+                Your AI suggestions will appear here...
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Today's Intentions</h2>
+            <textarea placeholder="Example: Reduce screen time and read for 30 minutes."></textarea>
+        </div>
+
+        <div class="section">
+            <h2>Daily Reflection</h2>
+            <textarea placeholder="How did social media affect your mood today?"></textarea>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
