@@ -127,6 +127,26 @@ button:hover {
     color: #fff;
 }
 
+.history-item {
+    background: #f4f8f7;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+.history-item button {
+    background: #d96c6c;
+    margin-top: 10px;
+}
+
+.history-item button:hover {
+    background: #b95454;
+}
+
+.dark-mode .history-item {
+    background: #2b2b2b;
+}
+
 @media (max-width: 768px) {
     body {
         padding: 20px;

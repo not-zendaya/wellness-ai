@@ -45,14 +45,22 @@
 
         <div class="section">
             <h2>Today's Intentions</h2>
-            <textarea placeholder="Example: Reduce screen time and read for 30 minutes."></textarea>
+        
+            <textarea id="intentionInput" placeholder="Example: Reduce screen time and read for 30 minutes."></textarea>
+            <button onclick="saveIntention()">
+                Save Intention
+            </button>
+            <div id="intentionsList"></div>
         </div>
-
+        
         <div class="section">
             <h2>Daily Reflection</h2>
-            <textarea placeholder="How did social media affect your mood today?"></textarea>
+            <textarea id="reflectionInput" placeholder="How did social media affect your mood today?"></textarea>
+            <button onclick="saveReflection()">
+                Save Reflection
+            </button>
+            <div id="reflectionsList"></div>
         </div>
-
     </div>
 
     <script src="app.js"></script>

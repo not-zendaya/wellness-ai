@@ -49,3 +49,83 @@ function increaseStreak() {
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
 }
+
+let intentions =
+    JSON.parse(localStorage.getItem("intentions")) || [];
+
+function saveIntention() {
+    const input =
+        document.getElementById("intentionInput");
+    const text = input.value.trim();
+    if (text === "") return;
+
+    intentions.push(text);
+    localStorage.setItem(
+        "intentions",
+        JSON.stringify(intentions)
+    );
+
+    input.value = "";
+    renderIntentions();
+}
+
+function renderIntentions() {
+    const container =
+        document.getElementById("intentionsList");
+    container.innerHTML = "";
+    intentions.forEach((item, index) => {
+        container.innerHTML += `
+            <div class="history-item">
+                <p>${item}</p>
+
+                <button onclick="deleteIntention(${index})">
+                    Delete
+                </button>
+            </div>
+        `;
+    });
+}
+
+    renderIntentions();
+}
+
+let reflections =
+    JSON.parse(localStorage.getItem("reflections")) || [];
+
+function saveReflection() {
+    const input =
+        document.getElementById("reflectionInput");
+    const text = input.value.trim();
+    if (text === "") return;
+
+    reflections.push(text);
+
+    localStorage.setItem(
+        "reflections",
+        JSON.stringify(reflections)
+    );
+
+    input.value = "";
+
+    renderReflections();
+}
+
+function renderReflections() {
+    const container =
+        document.getElementById("reflectionsList");
+    container.innerHTML = "";
+    reflections.forEach((item, index) => {
+        container.innerHTML += `
+            <div class="history-item">
+                <p>${item}</p>
+
+                <button onclick="deleteReflection(${index})">
+                    Delete
+                </button>
+            </div>
+        `;
+    });
+}
+
+renderIntentions();
+renderReflections();
