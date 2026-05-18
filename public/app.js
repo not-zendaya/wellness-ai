@@ -92,7 +92,16 @@ function saveReflection() {
     const text = input.value.trim();
     if (text === "") return;
 
-    reflections.push(text);
+    const line= text.split("\n");
+
+    lines.forEach(line => {
+        if (line.trim() !== "") {
+            reflections.push({
+                text: line.trim(),
+                date: new Date().toLocaleString()
+            });
+        }
+    });
 
     localStorage.setItem(
         "reflections",
@@ -157,8 +166,9 @@ function renderReflections() {
     reflections.forEach((item, index) => {
         container.innerHTML += `
             <div class="history-item">
+                <h3> ${index + 1}. ${item.text}</h3>
                 <p>${item.text}</p>
-                <small>${item.date}</small>
+                <small>Added: ${item.date}</small>
 
                 <br><br>
 
