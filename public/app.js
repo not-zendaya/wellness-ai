@@ -112,6 +112,33 @@ function saveMood() {
     updateAnalytics();
 }
 
+function renderIntentions() {
+    const container =
+        document.getElementById("intentionsList");
+    container.innerHTML = "";
+    intentions.forEach((item, index) => {
+        container.innerHTML += `
+            <div class="history-item">
+                <p>${item.text}</p>
+                <small>${item.date}</small>
+
+                <br><br>
+
+                <button
+                    class="edit-btn"
+                    onclick="editIntention(${index})">
+                    Edit
+                </button>
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteIntention(${index})">
+                    Delete
+                </button>
+            </div>
+        `;
+    });
+}
 function renderReflections() {
     const container =
         document.getElementById("reflectionsList");
@@ -119,9 +146,20 @@ function renderReflections() {
     reflections.forEach((item, index) => {
         container.innerHTML += `
             <div class="history-item">
-                <p>${item}</p>
+                <p>${item.text}</p>
+                <small>${item.date}</small>
 
-                <button onclick="deleteReflection(${index})">
+                <br><br>
+
+                <button
+                    class="edit-btn"
+                    onclick="editReflection(${index})">
+                    Edit
+                </button>
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteReflection(${index})">
                     Delete
                 </button>
             </div>
@@ -146,6 +184,18 @@ function renderMoods() {
     });
 }
 
+function deleteIntention(index) {
+    intentions.splice(index, 1);
+    localStorage.setItem(
+        "intentions",
+        JSON.stringify(intentions)
+    );
+
+    renderIntentions();
+    updateAnalytics();
+}
+
+
 function deleteReflection(index) {
     reflections.splice(index, 1);
     localStorage.setItem(
@@ -154,6 +204,43 @@ function deleteReflection(index) {
     );
     renderReflections();
 }
+
+function editIntention(index) {
+    const updatedText =
+        prompt(
+            "Edit intention:",
+            intentions[index].text
+        );
+
+    if (updatedText !== null) {
+        intentions[index].text = updatedText;
+        localStorage.setItem(
+            "intentions",
+            JSON.stringify(intentions)
+        );
+
+        renderIntentions();
+    }
+}
+
+function editReflection(index) {
+    const updatedText =
+        prompt(
+            "Edit reflection:",
+            reflections[index].text
+        );
+
+    if (updatedText !== null) {
+        reflections[index].text = updatedText;
+        localStorage.setItem(
+            "reflections",
+            JSON.stringify(reflections)
+        );
+
+        renderReflections();
+    }
+}
+
 function updateAnalytics() {
     const analytics =
         document.getElementById("analytics");
@@ -183,6 +270,9 @@ function updateAnalytics() {
         </div>
     `;
 }
+
+
 renderIntentions();
-renderReflections();renderMoods();
+renderReflections();
+renderMoods();
 updateAnalytics();

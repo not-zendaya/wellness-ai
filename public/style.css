@@ -145,6 +145,14 @@ button:hover {
 
 .dark-mode .history-item {
     background: #2b2b2b;
+.edit-btn {
+    background: #4f8a7b;
+}
+
+.delete-btn {
+    background: #d96c6c;
+}
+
 }
 
 @media (max-width: 768px) {
