@@ -50,8 +50,12 @@ function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
 }
 
+
 let intentions =
     JSON.parse(localStorage.getItem("intentions")) || [];
+
+let reflections =
+    JSON.parse(localStorage.getItem("reflections")) || [];
 
 function saveIntention() {
     const input =
@@ -69,35 +73,6 @@ function saveIntention() {
     renderIntentions();
 }
 
-function renderIntentions() {
-    const container =
-        document.getElementById("intentionsList");
-    container.innerHTML = "";
-    intentions.forEach((item, index) => {
-        container.innerHTML += `
-            <div class="history-item">
-                <p>${item}</p>
-
-                <button onclick="deleteIntention(${index})">
-                    Delete
-                </button>
-            </div>
-        `;
-    });
-}
-
-function deleteIntention(index) {
-    intentions.splice(index, 1);
-    localStorage.setItem(
-        "intentions",
-        JSON.stringify(intentions)
-    );
-
-    renderIntentions();
-}
-
-let reflections =
-    JSON.parse(localStorage.getItem("reflections")) || [];
 
 function saveReflection() {
     const input =
