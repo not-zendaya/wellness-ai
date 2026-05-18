@@ -66,7 +66,16 @@ function saveIntention() {
     const text = input.value.trim();
     if (text === "") return;
 
-    intentions.push(text);
+    const lines = text.split("\n");
+    lines.forEach(line => {
+        if (line.trim() !==""){
+            intentions.push({
+                text: line.trim(),
+                date: new Date().toLocaleString()
+            });
+        }
+    });
+
     localStorage.setItem(
         "intentions",
         JSON.stringify(intentions)
@@ -93,6 +102,7 @@ function saveReflection() {
     input.value = "";
 
     renderReflections();
+    updateAnalytics();
 }
 
 function saveMood() {
@@ -119,10 +129,11 @@ function renderIntentions() {
     intentions.forEach((item, index) => {
         container.innerHTML += `
             <div class="history-item">
+               <h3> ${index + 1}. ${item.text}</h3>
                 <p>${item.text}</p>
-                <small>${item.date}</small>
+                <small> Added: ${item.date}</small>
 
-                <br><br>
+                <br>
 
                 <button
                     class="edit-btn"
@@ -212,8 +223,10 @@ function editIntention(index) {
             intentions[index].text
         );
 
-    if (updatedText !== null) {
-        intentions[index].text = updatedText;
+    if (updatedText !== null && 
+        updatedText.trim() !==""
+    ) {
+        intentions[index].text = updatedText.trim();
         localStorage.setItem(
             "intentions",
             JSON.stringify(intentions)

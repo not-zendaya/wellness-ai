@@ -143,6 +143,11 @@ button:hover {
     background: #b95454;
 }
 
+.history-item h3 {
+    margin-top: 0;
+    color: #355c57;
+}
+
 .edit-btn {
     background: #4f8a7b;
 }
@@ -165,6 +170,14 @@ select {
     margin-top: 10px;
 }
 
+.dark-mode .history-item {
+    background: #2b2b2b;
+}
+
+.dark-mode .history-item,
+.dark-mode .analytics-box {
+    background: #2b2b2b;
+}
 @media (max-width: 768px) {
     body {
         padding: 20px;
@@ -181,11 +194,5 @@ select {
     button {
         width: 100%;
     }
-    .dark-mode .history-item {
-    background: #2b2b2b;
-    }
-    .dark-mode .history-item,
-    .dark-mode .analytics-box {
-        background: #2b2b2b;
-    }
+    
 }
