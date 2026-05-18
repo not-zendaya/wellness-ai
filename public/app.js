@@ -92,7 +92,7 @@ function saveReflection() {
     const text = input.value.trim();
     if (text === "") return;
 
-    const line= text.split("\n");
+    const lines = text.split("\n");
 
     lines.forEach(line => {
         if (line.trim() !== "") {
@@ -170,7 +170,7 @@ function renderReflections() {
                 <p>${item.text}</p>
                 <small>Added: ${item.date}</small>
 
-                <br><br>
+                <br>
 
                 <button
                     class="edit-btn"
