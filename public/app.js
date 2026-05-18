@@ -57,6 +57,9 @@ let intentions =
 let reflections =
     JSON.parse(localStorage.getItem("reflections")) || [];
 
+let moods =
+    JSON.parse(localStorage.getItem("moods")) || [];
+
 function saveIntention() {
     const input =
         document.getElementById("intentionInput");
@@ -71,8 +74,8 @@ function saveIntention() {
 
     input.value = "";
     renderIntentions();
+    updateAnalytics();
 }
-
 
 function saveReflection() {
     const input =
@@ -92,6 +95,23 @@ function saveReflection() {
     renderReflections();
 }
 
+function saveMood() {
+    const mood =
+        document.getElementById("moodSelect").value;
+    moods.push({
+        mood: mood,
+        date: new Date().toLocaleString()
+    });
+
+    localStorage.setItem(
+        "moods",
+        JSON.stringify(moods)
+    );
+
+    renderMoods();
+    updateAnalytics();
+}
+
 function renderReflections() {
     const container =
         document.getElementById("reflectionsList");
@@ -109,6 +129,23 @@ function renderReflections() {
     });
 }
 
+function renderMoods() {
+    const container =
+        document.getElementById("moodList");
+    container.innerHTML = "";
+    moods.forEach((item) => {
+        container.innerHTML += `
+            <div class="history-item">
+
+                <p>${item.mood}</p>
+
+                <small>${item.date}</small>
+
+            </div>
+        `;
+    });
+}
+
 function deleteReflection(index) {
     reflections.splice(index, 1);
     localStorage.setItem(
@@ -117,5 +154,35 @@ function deleteReflection(index) {
     );
     renderReflections();
 }
+function updateAnalytics() {
+    const analytics =
+        document.getElementById("analytics");
+
+    analytics.innerHTML = `
+        <div class="analytics-box">
+            <p>
+                🌱 Total Intentions:
+                ${intentions.length}
+            </p>
+
+            <p>
+                📝 Total Reflections:
+                ${reflections.length}
+            </p>
+
+            <p>
+                😊 Mood Entries:
+                ${moods.length}
+            </p>
+
+            <p>
+                🔥 Wellness Streak:
+                ${streak} days
+            </p>
+
+        </div>
+    `;
+}
 renderIntentions();
-renderReflections();
+renderReflections();renderMoods();
+updateAnalytics();

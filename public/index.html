@@ -61,6 +61,30 @@
             </button>
             <div id="reflectionsList"></div>
         </div>
+
+        <div class="section">
+        
+            <h2>Mood Tracker</h2>
+            <select id="moodSelect">
+                <option value="😊 Happy">😊 Happy</option>
+                <option value="😌 Calm">😌 Calm</option>
+                <option value="😐 Neutral">😐 Neutral</option>
+                <option value="😔 Stressed">😔 Stressed</option>
+                <option value="😩 Overwhelmed">😩 Overwhelmed</option>
+            </select>
+        
+            <button onclick="saveMood()">
+                Save Mood
+            </button>
+        
+            <div id="moodList"></div>
+        </div>
+        
+        <div class="section">
+        
+            <h2>Habit Analytics</h2>
+            <div id="analytics"></div>
+        </div>
     </div>
 
     <script src="app.js"></script>
